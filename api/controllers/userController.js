@@ -22,13 +22,23 @@ exports.create_an_user = function(req, res) {
 
 
 exports.read_an_user = function(req, res) {
-
-    User.findById(req.params.userId, function(err, user) {
-        if (!user) {
-            res.status(404).send({success: false, message: 'user not found.'});
-        }
-        res.send(user);
+try {
+    var _id = req.params.userId;
+    User.findById(_id, function (err, user) {
+            if (!user) {
+                return res.send({
+                    success: false,
+                    msg: 'user not found.',
+                    _objectId: _id
+                });
+            }
+            var user = user.toObject();
+            user.success = true;
+            res.send(user);
     });
+} catch(err){
+    res.status(404).json({success:false,error:err.toString()});
+}
 };
 
 
