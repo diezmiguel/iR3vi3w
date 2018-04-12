@@ -4,9 +4,13 @@ var Schema = mongoose.Schema;
 
 
 var usersSchema = new Schema({
-    name: {
+    fname: {
         type: String,
-        Required: 'Please provide name for the user.'
+        Required: 'Please provide first name for the user.'
+    },
+    lname: {
+            type: String,
+            Required: 'Please provide first name for the user.'
     },
     username: {
         type: String,
@@ -27,7 +31,7 @@ var usersSchema = new Schema({
     status: {
         type: [{
             type: String,
-            enum: ['pending', 'ongoing', 'completed']
+            enum: ['active', 'disabled', 'hold']
         }],
         default: ['pending']
     }

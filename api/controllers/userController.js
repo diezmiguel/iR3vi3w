@@ -11,15 +11,18 @@ exports.list_all_users = function(req, res) {
 };
 
 exports.create_an_user = function(req, res) {
-    var user = new User(req.body);
-    console.log(user);
-    user.save(function(err, user) {
-        if (err)
-            res.send(err);
-        res.send(user);
-    });
+    try {
+        var user = new User(req.body);
+        console.log(user);
+        user.save(function (err, user) {
+            if (err)
+                res.send(err);
+            res.send(user);
+        });
+    }catch(err) {
+        res.status(500).json({success:false,error:err.toString()});
+    }
 };
-
 
 exports.read_an_user = function(req, res) {
 try {
@@ -33,7 +36,6 @@ try {
                 });
             }
             var user = user.toObject();
-            user.success = true;
             res.send(user);
     });
 } catch(err){
