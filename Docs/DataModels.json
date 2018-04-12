@@ -1,0 +1,78 @@
+File: userModel.js
+collection: Users
+    first_name
+        type: String
+        Required: 'Please provide first name for the user.'
+    last_name
+        type: String
+        Required: 'Please provide last name for the user.'
+    user_name
+        type: String
+        Required: 'Please provide username for the user.'
+    password
+        type: String
+        Required: 'Please provide password for the user.'
+    active
+        type: Boolean
+        Required: 'Please provide status for the user.'
+    created_date
+         type: Date
+         default: Date.now
+    user_type:[{
+        type: String,
+        enum:['API','Web']
+        }],
+        default: ['Web']
+    access_code
+            type: String
+
+
+File: reviewModel.js
+collection: Reviews
+    review_message
+        type:String
+        Required: 'Please provide the review message to be reviewed.'
+    company_code
+        type: Integer
+        Required: 'company_code cannot be null.'
+    review_type
+        type: [{
+        String,
+        enum: ['one-way', 'two-ways']
+        }],
+        default: ['one-way']
+     requestor_phone
+        type: String
+        Required: 'You must provide your mobile number '
+
+
+    request_date
+            type:Date
+            default:Date.now
+    approved
+        type:Boolean
+        default:false
+
+File:companyModel.js
+collection: Companies
+    name
+        type:String
+        Required: 'Company name cannot be null.'
+    website_url
+        type: String
+        default:null
+    address
+        type: String
+        Required: 'Address ccannot be null.'
+    primary_phone: String
+        Required: 'Primary phone number cannot be null.'
+    secondary_phone
+        default: null
+    city:
+        type: String
+        Required:'City cannot be null.'
+    state:
+        type: String
+        Required: 'State cannot be null.'
+    zipcode: String
+        Required: 'Zipcode cannot be null.'

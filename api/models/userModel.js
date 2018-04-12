@@ -6,23 +6,23 @@ var Schema = mongoose.Schema;
 var usersSchema = new Schema({
     fname: {
         type: String,
-        Required: 'Please provide first name for the user.'
+        Required: [true, 'Please provide first name for the user.']
     },
     lname: {
             type: String,
-            Required: 'Please provide first name for the user.'
+            Required:[true, 'Please provide first name for the user.']
     },
     username: {
         type: String,
-        message: 'Please provide username for the user.'
+        message: [true, 'Please provide username for the user.']
     },
     password: {
         type: String,
-        message: 'Please provide password for the user.'
+        message: [true, 'Please provide password for the user.']
     },
     active: {
         type: Boolean,
-        message: 'Please provide status for the user.'
+        message: [true, 'Please provide status for the user.']
     },
     Created_date: {
         type: Date,
