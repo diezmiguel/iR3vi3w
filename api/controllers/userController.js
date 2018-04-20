@@ -4,6 +4,10 @@ var mongoose = require('mongoose'),
     User = mongoose.model('Users');
 exports.list_all_users = function(req, res) {
     User.find({}, function(err, user) {
+        if (res.json.length == 0) {
+            console.log("kjhjkjh");
+            res.status(200).send({msg:'no data found.'});
+        }
         if (err)
             res.send(err);
         res.json(user);
