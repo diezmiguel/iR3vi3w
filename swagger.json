@@ -1,0 +1,139 @@
+{
+  "info": {
+    "title": "iReview",
+    "version": "1.0.0",
+    "description": "iReview API documentation"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "swagger": "2.0",
+  "paths": {
+    "/users/": {
+      "get": {
+        "description": "Returns users",
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "users"
+          }
+        }
+      },
+      "post": {
+        "description": "Returns users",
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/username"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "users"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "put": {
+        "description": "Updates an user",
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "/users/#",
+            "in": "path"
+          },
+          {
+            "name": "id",
+            "description": "User's object Id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "users"
+          }
+        }
+      },
+      "delete": {
+        "description": "Deletes an user",
+        "tags": [
+          "Users"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "/users/#"
+          },
+          {
+            "name": "id",
+            "description": "User's object Id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "users"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Login": {
+      "required": [
+        "username",
+        "password"
+      ],
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "responses": {},
+  "parameters": {
+    "username": {
+      "name": "username",
+      "description": "Username to use for login.",
+      "in": "formData",
+      "required": true,
+      "type": "string"
+    }
+  },
+  "securityDefinitions": {},
+  "tags": [
+    {
+      "name": "Users",
+      "description": "User management and login"
+    }
+  ]
+}

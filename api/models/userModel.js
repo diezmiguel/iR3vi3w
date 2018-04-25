@@ -33,7 +33,7 @@ var usersSchema = new Schema({
             type: String,
             enum: ['active', 'disabled', 'hold']
         }],
-        default: ['pending']
+        default: ['active']
     }
     },
     {
