@@ -21,6 +21,9 @@
         "responses": {
           "200": {
             "description": "users"
+          },
+          "204": {
+            "description": "No content"
           }
         }
       },
@@ -56,12 +59,12 @@
         "parameters": [
           {
             "$ref": "/users/#",
-            "in": "path"
+            "in": "form"
           },
           {
             "name": "id",
             "description": "User's object Id",
-            "in": "path",
+            "in": "form",
             "required": true,
             "type": "string"
           }
@@ -69,6 +72,9 @@
         "responses": {
           "200": {
             "description": "users"
+          },
+          "204": {
+            "description": "No user found"
           }
         }
       },
