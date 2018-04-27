@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
     User = mongoose.model('Users'),
     _ = require('lodash');
 
+
 exports.list_all_users = function (req, res) {
     User.find({}, function (err, user) {
         if (_.isEmpty(user)) {
@@ -27,6 +28,7 @@ exports.create_an_user = function (req, res) {
 };
 
 exports.read_an_user = function (req, res) {
+
     try {
         var _id = req.params.userId;
         User.findById(_id, function (err, user) {
@@ -78,3 +80,4 @@ exports.delete_an_user = function (req, res) {
     return res.status(200).send(response);
     });
 };
+
