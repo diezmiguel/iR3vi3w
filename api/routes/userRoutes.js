@@ -5,14 +5,17 @@ var router = require("express").Router();
 module.exports = function(app) {
 
     var userController = require('../controllers/userController');
+    var token = require('../Auth/VerifyToken');
 
-    app.route("/users").get(userController.list_all_users)
+    const checkUser = [token.verifyToken()];
+
+    app.route("/users")
+        .get(checkUser, userController.list_all_users)
         .post(userController.create_an_user);
 
 
     app.route('/users/:userId')
-        .get( userController.read_an_user)
-        .put(userController.update_an_user)
-        .put(userController.update_an_user)
-        .delete(userController.delete_an_user);
+        .get(checkUser, userController.read_an_user)
+        .put(checkUser, userController.update_an_user)
+        .delete(checkUser, userController.delete_an_user);
 };

@@ -26,7 +26,7 @@ app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 //END Swagger Info
 
 
-app.use('/users/*', VerifyToken);
+// app.use('/users/*', VerifyToken);
 
 var userRoutes = require('./api/routes/userRoutes'); //importing route
 userRoutes(app); //register the route
